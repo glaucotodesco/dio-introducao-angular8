@@ -24,12 +24,15 @@
             <td><img [src]='course.imageUrl'  width="40px" height="40px"/></td>
             <td>{{course.name}}</td>
             <td>{{course.price}}</td>
-            <td>{{course.code}}</td>
+            <td>{{course.code | lowercase | replace: '-': '@' }}</td>
             <td>
                 <app-star [rating]='course.rating' ></app-star>
             </td>
-            <td>{{course.releaseDate}}</td>
-            <td></td>
+            <td>{{course.releaseDate | date: 'dd/MM/yyyy'}}</td>
+            <td>
+                <a [routerLink]="['/courses/info', course.id]" class='btn btn-primary'>Edit</a>
+
+            </td>
         </tr>
     </tbody>
 </table>
