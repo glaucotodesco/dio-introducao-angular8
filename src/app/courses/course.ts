@@ -1,11 +1,11 @@
 export interface Course {
-    id ?: number;
+    id : number;
     name : string;
-    imageUrl?: string;
-    price?: number;
+    imageUrl: string;
+    price: number;
     code : string;
-    duration?: number;
+    duration: number;
     rating: number;
-    releaseDate?: string;
-    description?: string;
+    releaseDate: string;
+    description: string;
 }
