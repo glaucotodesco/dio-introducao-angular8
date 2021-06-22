@@ -14,12 +14,24 @@ export class CourseListComponent implements OnInit {
     filteredCourses: Course[] = [];
 
     constructor(private courseService: CourseService){
-        this._courses = courseService.retrieveAll();
-        this.filteredCourses = this._courses;
     }
 
     ngOnInit(): void {
-       
+        this.retrieveAll();
+    }
+ 
+    retrieveAll(): void {
+        this.courseService.retrieveAll().subscribe(
+            {
+                next: courses => {
+                    this._courses = courses;
+                    this.filteredCourses = this._courses;
+                },
+                error: err => console.log('Error',err)
+            }
+
+        );
+
     }
 
     set filter(value:string){
